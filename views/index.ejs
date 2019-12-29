@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>微WiKi</title>
+    <script src="/static/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/css/index_base.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/code.css" type="text/css">
+    <style type="text/css">
+        .recentcomments a {
+            display: inline !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
+    <style type="text/css" id="custom-background-css">
+        body.custom-background {
+            background-color: #842b2b;
+        }
+    </style>
+</head>
+
+<body class="home blog custom-background custom-font-enabled single-author">
+    <div id="page" class="hfeed site">
+        <header id="masthead" class="site-header" role="banner">
+            <hgroup>
+                <h1 class="site-title">
+                    <a href="/index" title="戴智豪个人博客">微WiKi</a>
+                </h1>
+                <h2 class="site-description">
+                    <aside>
+                        <div>
+                            <form action="/search" method="post">
+                                <input placeholder="维一下，全都有" type="text" name="keywords" id="s">
+                                <input type="submit" class="btn" id="search" value="搜索">
+                            </form>
+                        </div>
+                    </aside>
+                </h2>
+
+            </hgroup>
+
+            <nav id="site-navigation" class="main-navigation">
+                <ul class="nav-menu">
+                    <li><a href="/">美食</a></li>
+                    <li><a href="/">新闻</a></li>
+                    <li><a href="/">微博</a></li>
+                    <li><a href="/">服装</a></li>
+                    <li><a href="/">视频</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div style="text-align:right;margin-right:100px;font-size:15px">
+            <% if(username){ %>
+            hao
+            <a href="/user/logout">注销</a>
+            <% }else{ %>
+            <a href="/user/login">登录</a>
+            <% }%>
+        </div>
+
+        <div id="main" class="wrapper">
+            <div id="primary" class="site-content">
+                <div id="content" role="main">
+
+                    <article>
+                        <header class="entry-header">
+                            <h1 class="entry-title">
+                                <a href="/detail/{{blog.id}}" title="{{ blog.b_title }}" rel="bookmark">广州一日游攻略
+                                </a>
+                            </h1>
+                        </header>
+                        <div class="entry-content">
+                            天下美食
+                        </div>
+                        <footer class="entry-meta">
+                            更新时间：<a href="#" title="{{ blog.b_upd_date }}" rel="bookmark"> 2019.12.14</a>
+                            作者：<a href="#" title="查看{{blog.b_author}}的全部文章" rel="category">愤怒的小可爱</a>
+                            阅读：1210
+                            <a href="#" title="" rel="category">收藏</a>455
+                            <a href="/delete/{{blog.id}}">不感兴趣</a>
+                        </footer>
+                    </article>
+                    <article>
+                        <header class="entry-header">
+                            <h1 class="entry-title">
+                                <a href="/detail/{{blog.id}}" title="{{ blog.b_title }}" rel="bookmark">广州一日游攻略
+                                </a>
+                            </h1>
+                        </header>
+                        <div class="entry-content">
+                            天下美食
+                        </div>
+                        <footer class="entry-meta">
+                            更新时间：<a href="#" title="{{ blog.b_upd_date }}" rel="bookmark"> 2019.12.14</a>
+                            作者：<a href="#" title="查看{{blog.b_author}}的全部文章" rel="category">愤怒的小可爱</a>
+                            阅读：1210
+                            <a href="#" title="" rel="category">收藏</a>455
+                            <a href="/delete/{{blog.id}}">不感兴趣</a>
+                        </footer>
+                    </article>
+                    <article>
+                        <header class="entry-header">
+                            <h1 class="entry-title">
+                                <a href="/detail/{{blog.id}}" title="{{ blog.b_title }}" rel="bookmark">广州一日游攻略
+                                </a>
+                            </h1>
+                        </header>
+                        <div class="entry-content">
+                            天下美食
+                        </div>
+                        <footer class="entry-meta">
+                            更新时间：<a href="#" title="{{ blog.b_upd_date }}" rel="bookmark"> 2019.12.14</a>
+                            作者：<a href="#" title="查看{{blog.b_author}}的全部文章" rel="category">愤怒的小可爱</a>
+                            阅读：1210
+                            <a href="#" title="" rel="category">收藏</a>455
+                            <a href="/delete/{{blog.id}}">不感兴趣</a>
+                        </footer>
+                    </article>
+                    <article>
+                        <header class="entry-header">
+                            <h1 class="entry-title">
+                                <a href="/detail/{{blog.id}}" title="{{ blog.b_title }}" rel="bookmark">广州一日游攻略
+                                </a>
+                            </h1>
+                        </header>
+                        <div class="entry-content">
+                            天下美食
+                        </div>
+                        <footer class="entry-meta">
+                            更新时间：<a href="#" title="{{ blog.b_upd_date }}" rel="bookmark"> 2019.12.14</a>
+                            作者：<a href="#" title="查看{{blog.b_author}}的全部文章" rel="category">愤怒的小可爱</a>
+                            阅读：1210
+                            <a href="#" title="" rel="category">收藏</a>455
+                            <a href="/delete/{{blog.id}}">不感兴趣</a>
+                        </footer>
+                    </article>
+
+                    <a href="/show_blog/{{page.previous_page_number}}">&lt;上一页</a>
+
+
+
+                    <a href="/show_blog/{{p_index}}">1 2 3 4 5 6...</a>
+
+                    <a href="/show_blog/{{page.next_page_number}}">下一页&gt;</a>
+
+                </div>
+            </div>
+        </div>
+        <footer id="colophon" role="contentinfo">
+            <div class="site-info">
+                <a href="/">个人中心</a>
+                <a href="/">github</a>
+            </div>
+        </footer>
+        <footer style="margin-top:0;">
+            <div class="site-info" style="text-align:center;height:40px">
+                <span style="position:relative;margin:2px;">
+                    粤ICP备19044749号
+                </span>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
