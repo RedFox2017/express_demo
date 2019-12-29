@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RedFox2017/express_demo.git"
+  },
   "author": "hao",
   "license": "ISC",
   "dependencies": {
