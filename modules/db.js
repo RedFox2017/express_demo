@@ -2,6 +2,8 @@ var MongoClient = require('mongodb').MongoClient
 //配置数据库地址
 var dbUrl = 'mongodb://localhost:27017/test'
 
+var ObjectID = require('mongodb').ObjectID;
+
 function __connectDb(callback) {
 
     MongoClient.connect(dbUrl, (err, client) => {
@@ -36,3 +38,31 @@ exports.find = (collectionName, json, callback) => {
         client.close()
     })
 }
+exports.findOne = (collectionName, json, callback) => {
+    __connectDb((client) => {
+        var db = client.db('test')
+        db.collection(collectionName).findOne(json, (error, result) => {
+            callback(error, result)
+        })
+        client.close()
+    })
+}
+exports.deleteOne = (collectionName, json, callback) => {
+    __connectDb((client) => {
+        var db = client.db('test')
+        db.collection(collectionName).deleteOne(json, (error, result) => {
+            callback(error, result)
+        })
+        client.close()
+    })
+}
+exports.update = (collectionName, json1, json2, callback) => {
+    __connectDb((client) => {
+        var db = client.db('test')
+        db.collection(collectionName).update(json1, { $set: json2 }, (error, result) => {
+            callback(error, result)
+        })
+        client.close()
+    })
+}
+exports.ObjectID = ObjectID

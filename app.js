@@ -27,5 +27,4 @@ app.use((req, res, next) => {
 var index = require('./routes/index')
 app.use('/', index)
 
-
 app.listen(8800)

@@ -93,7 +93,10 @@
                             <a href="#panel-449847" data-toggle="tab">我的收藏</a>
                         </li>
                         <li>
-                            <a href="#panel-449848" data-toggle="tab">我的信息</a>
+                            <a href="#panel-449848" data-toggle="tab">我的消息</a>
+                        </li>
+                        <li>
+                            <a href="#panel-449849" data-toggle="tab">我的关注</a>
                         </li>
                     </ul>
                     <div class="tab-content" style="margin-top: 20px;">
@@ -111,32 +114,35 @@
                                                     <form role="form" class="form-inline" action="/article/publish"
                                                         method="POST">
                                                         <div class="form-group">
-                                                            <textarea class="form-control" placeholder="文章标题 (30字以内)"
-                                                                rows="1" maxlength="30" cols="120"
-                                                                style="width: 100%;font-size:medium;border:none;border-radius:0px;resize:none;-webkit-box-shadow:none;box-shadow:none;"></textarea>
+                                                            <textarea class="form-control" name="title"
+                                                                placeholder="文章标题 (30字以内)" rows="1" maxlength="30"
+                                                                cols="120"
+                                                                style="width: 100%;font-size:medium;
+                                                                border:none;border-radius:0px;resize:none;-webkit-box-shadow:none;box-shadow:none;"><%=from.datas%></textarea>
                                                         </div>
                                                         <div class="form-group">
                                                             <textarea class="form-control" rows="3" cols="120"
                                                                 maxlength="100"
                                                                 style="width: 100%; border:none;border-radius:0px;resize:none;-webkit-box-shadow:none;box-shadow:none;"
-                                                                placeholder="导语 (选填：100字以内）"></textarea>
+                                                                placeholder="导语 (选填：100字以内）"
+                                                                name="sub_title"><%=test.user%><%=from.title%></textarea>
                                                         </div>
                                                         <div class="form-group">
                                                             <textarea class="form-control" rows="15" cols="120"
                                                                 style="width: 100%; border:none;resize:none;border-radius:0px;-webkit-box-shadow:none;box-shadow:none;"
-                                                                placeholder="正文"></textarea>
+                                                                placeholder="正文" name="content"></textarea>
                                                         </div>
                                                         <br>
                                                         <div class="form-group">
                                                             <label for="exampleInputFile">文章封面</label><input type="file"
-                                                                id="exampleInputFile" />
+                                                                name="cover" id="exampleInputFile" />
                                                             <p class="help-block">
                                                                 只允许上传jpg/png/jpeg格式图片
                                                             </p>
                                                         </div>
                                                         <br>
                                                         <div class="checkbox">
-                                                            <label><input type="checkbox" />原创</label>
+                                                            <label><input type="checkbox" name="original" />原创</label>
                                                         </div>
                                                         <button type="submit" class="btn btn-default">发布</button>
                                                         <button type="button" class="btn btn-default">保存</button>
@@ -146,14 +152,96 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3 column">
-                                            <ul class="nav nav-pills">
-                                                <li class="active">
-                                                    <a href="#"> <span class="badge pull-right">42</span> 待办事项</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"> <span class="badge pull-right">16</span> 我的消息</a>
-                                                </li>
-                                            </ul>
+                                            <div class="tabbable" id="tabs-747653">
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active">
+                                                        <a href="#panel-954359" data-toggle="tab">草稿箱</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#panel-946422" data-toggle="tab">已发布</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="panel-954359">
+                                                        <table class="table table-condensed">
+                                                            <tbody>
+                                                                <% list.forEach((item)=>{
+                                                                    if(item.status == 'draft'){%>
+                                                                <tr>
+                                                                    <td>
+                                                                        19/12/15
+                                                                    </td>
+                                                                    <td>
+                                                                        <%=item.title %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <li class="dropdown">
+                                                                            <a href="#" class="dropdown-toggle"
+                                                                                data-toggle="dropdown">
+                                                                                <strong class="caret">
+                                                                                </strong></a>
+                                                                            <ul class="dropdown-menu">
+                                                                                <li>
+                                                                                    <a
+                                                                                        href="/article/del/<%=item._id%>">删除</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a
+                                                                                        href="/article/pub/<%=item._id%>">发布</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a
+                                                                                        href="/article/edit/<%=item._id%>">编辑</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                    </td>
+                                                                </tr>
+                                                                <% }}) %>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="tab-pane" id="panel-946422">
+                                                        <table class="table table-condensed">
+                                                            <tbody>
+                                                                <% list.forEach((item)=>{
+                                                                    if(item.status == 'publish'){%>
+                                                                <tr>
+                                                                    <td>
+                                                                        19/12/15
+                                                                    </td>
+                                                                    <td>
+                                                                        <%=item.title %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <li class="dropdown">
+                                                                            <a href="#" class="dropdown-toggle"
+                                                                                data-toggle="dropdown">
+                                                                                <strong class="caret">
+                                                                                </strong></a>
+                                                                            <ul class="dropdown-menu">
+                                                                                <li>
+                                                                                    <a
+                                                                                        href="/article/del/<%=item._id%>">删除</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a
+                                                                                        href="/article/back/<%=item._id%>">撤回</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a
+                                                                                        href="/article/edit/<%=item._id%>">编辑</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                    </td>
+                                                                </tr>
+                                                                <%}}) %>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -168,6 +256,11 @@
                         <div class="tab-pane" id="panel-449848">
                             <p>
                                 我的消息
+                            </p>
+                        </div>
+                        <div class="tab-pane" id="panel-449849">
+                            <p>
+                                我的关注
                             </p>
                         </div>
                     </div>
