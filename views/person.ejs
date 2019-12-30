@@ -118,19 +118,21 @@
                                                                 placeholder="文章标题 (30字以内)" rows="1" maxlength="30"
                                                                 cols="120"
                                                                 style="width: 100%;font-size:medium;
-                                                                border:none;border-radius:0px;resize:none;-webkit-box-shadow:none;box-shadow:none;"><%=from.datas%></textarea>
+                                                                border:none;border-radius:0px;resize:none;-webkit-box-shadow:none;box-shadow:none;overflow:hidden"><%if(from){%><%=from.title%>
+                                                                    <%}%></textarea>
                                                         </div>
                                                         <div class="form-group">
                                                             <textarea class="form-control" rows="3" cols="120"
                                                                 maxlength="100"
                                                                 style="width: 100%; border:none;border-radius:0px;resize:none;-webkit-box-shadow:none;box-shadow:none;"
-                                                                placeholder="导语 (选填：100字以内）"
-                                                                name="sub_title"><%=test.user%><%=from.title%></textarea>
+                                                                placeholder="导语 (选填：100字以内）" name="sub_title"><%if(from){%><%=from.sub_title%>
+                                                                    <%}%></textarea>
                                                         </div>
                                                         <div class="form-group">
                                                             <textarea class="form-control" rows="15" cols="120"
                                                                 style="width: 100%; border:none;resize:none;border-radius:0px;-webkit-box-shadow:none;box-shadow:none;"
-                                                                placeholder="正文" name="content"></textarea>
+                                                                placeholder="正文" name="content"><%if(from){%><%=from.content%>
+                                                                    <%}%></textarea>
                                                         </div>
                                                         <br>
                                                         <div class="form-group">

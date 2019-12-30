@@ -53,7 +53,7 @@ router.get('/edit/:aid', (req, res) => {
             req.session.from = result
             console.log('edit:')
             console.log(req.session.from)
-            res.redirect('/')
+            res.redirect('/person')
         }
     })
 

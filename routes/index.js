@@ -10,16 +10,12 @@ router.get('/', (req, res) => {
     })
 })
 router.get('/person', (req, res) => {
-    console.log('/peron:')
-    console.log(req.session.from)
-
     if (true) {
         Db.find('article', {}, (error, result) => {
-            var data = req.session.from
             res.render('person', {
                 username: req.session.username,
                 list: result,
-                from: { title: 'ccc', data: 'ddd' },
+                from: req.session.from,
                 test: { user: 'wei', pwdd: 'xx' }
             })
         })
