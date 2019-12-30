@@ -1,8 +1,13 @@
 var express = require('express')
 var bodyParser = require('body-parser')
-
+var session = require('express-session')
 var app = new express()
-
+//配置session
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+}))
 //配置静态托管
 app.use('/static', express.static('statics'))
 //配置ejs模板引擎

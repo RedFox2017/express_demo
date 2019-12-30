@@ -3,9 +3,8 @@ var router = express.Router()
 var Db = require('../modules/db')
 router.get('/', (req, res) => {
     Db.find('user', {}, (error, result) => {
-        console.log(result)
         res.render('index', {
-            username: '',
+            username: req.session.username,
             list: result
         })
     })
