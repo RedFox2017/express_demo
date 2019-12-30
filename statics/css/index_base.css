@@ -397,8 +397,8 @@ a:hover {
     background-color: #fff;
 }
 .site-content {
-    margin: 24px 0 0;
-    margin: 1.714285714rem 0 0;
+    /* margin: 24px 0 0; */
+    margin: 0 auto;
 }
 .widget-area {
     margin: 24px 0 0;
@@ -1207,8 +1207,8 @@ a.comment-reply-link:hover, a.comment-edit-link:hover {
         overflow: hidden;
     }
     .site-content {
-        float: left;
-        width: 65.104166667%;
+        /* float: left; */
+        width: 600px;
     }
     body.template-front-page .site-content, body.single-attachment .site-content, body.full-width .site-content {
         width: 100%;
