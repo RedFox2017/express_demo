@@ -2,14 +2,25 @@ var express = require('express')
 var router = express.Router()
 var Db = require('../../modules/db')
 router.post('/publish', (req, res) => {
-    console.log('打印文章如下')
-    console.log(req.body)
     req.body.status = 'publish'
     Db.insertOne('article', req.body, (err, result) => {
         if (err) {
             console.log('发布失败')
+            return
         } else {
             console.log('发布成功')
+            req.session.from = null
+            res.redirect('/person')
+        }
+    })
+})
+router.post('/save', (req, res) => {
+    req.body.status = 'draft'
+    Db.insertOne('article', req.body, (err, result) => {
+        if (err) {
+            console.log('保存失败')
+        } else {
+            console.log('保存成功')
         }
     })
     res.redirect('/person')
