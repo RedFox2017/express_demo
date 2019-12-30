@@ -4,6 +4,10 @@ var Db = require('../../modules/db')
 router.get('/login', (req, res) => {
     res.render('login')
 })
+router.get('/logout', (req, res) => {
+    req.session.destroy()
+    res.redirect('/')
+})
 router.get('/reg', (req, res) => {
     res.render('reg')
 })
