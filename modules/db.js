@@ -31,8 +31,20 @@ exports.insertOne = (collectionName, json, callback) => {
 exports.find = (collectionName, json, callback) => {
     __connectDb((client) => {
         var db = client.db('test')
-        var result = db.collection(collectionName).find(json)
-        result.toArray((error, result) => {
+        var cur = db.collection(collectionName).find(json)
+        cur.toArray((error, result) => {
+            callback(error, result)//回调函数会执行,返回转换数组的错误或者正确结果
+        })
+        client.close()
+    })
+}
+exports.search = (collectionName, json, callback) => {
+    __connectDb((client) => {
+        var db = client.db('test')
+        var { status, queryString } = json
+        console.log({ 'status': status, 'title': "/" + queryString + "/" })
+        var cur = db.collection(collectionName).find({ 'status': 'publish', 'title': { $regex: "^" + queryString + ".*" } })
+        cur.toArray((error, result) => {
             callback(error, result)//回调函数会执行,返回转换数组的错误或者正确结果
         })
         client.close()

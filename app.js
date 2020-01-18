@@ -1,7 +1,11 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var session = require('express-session')
+var cors = require('cors')
 var app = new express()
+//跨域配置
+app.use(cors())
+
 //配置session
 app.use(session({
     secret: 'keyboard cat',
@@ -25,6 +29,9 @@ app.use((req, res, next) => {
 //路由模块化
 
 var index = require('./routes/index')
+var api = require('./routes/api')
+
+app.use('/api', api)
 app.use('/', index)
 
-app.listen(8800)
+app.listen(9000)
